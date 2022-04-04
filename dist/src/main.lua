@@ -11,7 +11,7 @@ on('draw', function (drawer)
     drawer:drawTexture(cat, 100, 100, Colors.WHITE)
 end)
 
-on('mouse_button_pressed', function(button, x, y)
+on('mouseButtonPressed', function(button, x, y)
     if button ~= MouseButton.MOUSE_BUTTON_LEFT then return end
     if not Vector.inRange(Vector.from(x, y), 25, 75) then return end
     clicks = clicks + 1
@@ -19,7 +19,7 @@ on('mouse_button_pressed', function(button, x, y)
     print(String.toString(Input:getMousePosition()))
 end)
 
-on('key_pressed', function(key)
+on('keyPressed', function(key)
     if key ~= KeyboardButton.KEY_SPACE then return end
     clicks = clicks + 1
 end)
