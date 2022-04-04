@@ -10,7 +10,7 @@ public class OneSecondEvent implements JavaEvent {
 
     @Override
     public String getName() {
-        return "1s_event";
+        return "1sEvent";
     }
 
     @Override

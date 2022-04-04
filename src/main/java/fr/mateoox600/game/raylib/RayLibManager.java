@@ -26,7 +26,7 @@ public class RayLibManager {
 
         boolean initialized = false;
         JavaEvent drawEvent = JavaEvents.getFromName("draw");
-        JavaEvent drawUiEvent = JavaEvents.getFromName("draw_ui");
+        JavaEvent drawUiEvent = JavaEvents.getFromName("drawUi");
         if(drawEvent == null) throw new Error("Critical error missing draw event");
         if(drawUiEvent == null) throw new Error("Critical error missing draw ui event");
         while (!raylib.core.WindowShouldClose()){

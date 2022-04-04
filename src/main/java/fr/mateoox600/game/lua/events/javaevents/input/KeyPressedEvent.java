@@ -10,7 +10,7 @@ public class KeyPressedEvent implements JavaEvent {
 
     @Override
     public String getName() {
-        return "key_pressed";
+        return "keyPressed";
     }
 
     @Override

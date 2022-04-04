@@ -10,7 +10,7 @@ public class KeyReleasedEvent implements JavaEvent {
 
     @Override
     public String getName() {
-        return "key_released";
+        return "keyReleased";
     }
 
     @Override

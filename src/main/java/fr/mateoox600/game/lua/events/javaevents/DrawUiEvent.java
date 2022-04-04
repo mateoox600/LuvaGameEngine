@@ -9,7 +9,7 @@ public class DrawUiEvent implements JavaEvent {
 
     @Override
     public String getName() {
-        return "draw_ui";
+        return "drawUi";
     }
 
     @Override

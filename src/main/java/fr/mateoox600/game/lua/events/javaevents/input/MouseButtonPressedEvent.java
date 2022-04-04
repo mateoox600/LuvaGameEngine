@@ -10,7 +10,7 @@ public class MouseButtonPressedEvent implements JavaEvent {
 
     @Override
     public String getName() {
-        return "mouse_button_pressed";
+        return "mouseButtonPressed";
     }
 
     @Override
