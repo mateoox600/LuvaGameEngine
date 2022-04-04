@@ -1,0 +1,10 @@
+{
+    "Lua.diagnostics.globals": [
+        "on",
+        "Colors",
+        "Input",
+        "KeyboardButton",
+        "MouseButton",
+        "camera"
+    ]
+}

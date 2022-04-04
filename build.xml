@@ -1,0 +1,44 @@
+<project name="Game" default="build">
+
+    <property name="version" value="1.0"/>
+
+    <property name="main" location="src/main"/>
+
+    <property name="src" location="${main}/java"/>
+    <property name="ressources" location="${main}/resources"/>
+
+    <property name="lib" location="lib"/>
+
+    <property name="build" location="build"/>
+    <property name="dist" location="dist"/>
+
+    <path id="jars">
+        <fileset dir="${lib}" includes="**/*.jar"/>
+    </path>
+
+    <target name="setupWorkspace">
+        <mkdir dir="${build}"/>
+    </target>
+
+    <target name="compileJava" depends="setupWorkspace">
+
+        <javac srcdir="${src}" destdir="${build}" classpathref="jars" includeantruntime="false"/>
+
+    </target>
+
+    <target name="build" depends="compileJava">
+        <jar jarfile="${dist}/${ant.project.name}-${version}.jar" basedir="${build}">
+            <zipgroupfileset dir="${lib}" includes="**/*.jar"/>
+            <zipfileset dir="${ressources}"/>
+
+            <manifest>
+                <attribute name="Build-By" value="Mateoox600"/>
+                <attribute name="Main-Class" value="fr.mateoox600.game.Main"/>
+                <attribute name="Version" value="${version}"/>
+            </manifest>
+        </jar>
+
+        <delete dir="${build}"/>
+    </target>
+
+</project>

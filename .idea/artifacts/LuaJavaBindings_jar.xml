@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="LuaJavaBindings:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/LuaJavaBindings_jar</output-path>
+    <root id="archive" name="LuaJavaBindings.jar">
+      <element id="module-output" name="LuaJavaBindings" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/kahlua/bin/kahlua-5.1_2.1.0-j2se.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/Raylib-J.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
