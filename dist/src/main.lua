@@ -5,7 +5,7 @@ local cat = load('./cat.png');
 
 local clicks = 0
 
-on('draw', function (drawer)
+on('draw', function(drawer)
     drawer:drawRect(25, 25, 50, 50, Colors.fromRGB(255, 0, 0))
     drawer:drawText('Clicks: ' .. clicks, 100, 25, 16, Colors.BLACK)
     drawer:drawTexture(cat, 100, 100, Colors.WHITE)
