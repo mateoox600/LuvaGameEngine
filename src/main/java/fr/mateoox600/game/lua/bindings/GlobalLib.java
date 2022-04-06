@@ -1,12 +1,12 @@
 package fr.mateoox600.game.lua.bindings;
 
 import com.raylib.java.textures.Image;
-import com.raylib.java.textures.Texture2D;
 import com.raylib.java.textures.rTextures;
 import fr.mateoox600.game.Main;
 import fr.mateoox600.game.lua.resources.LuaFileUtils;
 import fr.mateoox600.game.lua.resources.ResourceLoader;
 import fr.mateoox600.game.raylib.MemoryManager;
+import fr.mateoox600.game.raylib.Texture;
 import se.krka.kahlua.integration.LuaReturn;
 import se.krka.kahlua.integration.annotations.LuaMethod;
 import se.krka.kahlua.vm.LuaClosure;
@@ -31,10 +31,9 @@ public class GlobalLib {
     }
 
     @LuaMethod(name = "load", global = true)
-    public Texture2D load(String path) {
+    public Texture load(String path) {
         Image image = rTextures.LoadImage(ResourceLoader.loadResource(path).getPath().toString());
-        Texture2D texture = rTextures.LoadTextureFromImage(image);
-        rTextures.UnloadImage(image);
+        Texture texture = new Texture(image);
         MemoryManager.loadedTextures.add(texture);
         return texture;
     }

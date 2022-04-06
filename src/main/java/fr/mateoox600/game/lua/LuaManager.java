@@ -1,13 +1,13 @@
 package fr.mateoox600.game.lua;
 
 import com.raylib.java.core.Color;
-import com.raylib.java.textures.Texture2D;
 import fr.mateoox600.game.Main;
 import fr.mateoox600.game.lua.bindings.*;
 import fr.mateoox600.game.lua.events.EventManager;
 import fr.mateoox600.game.lua.resources.LuaFileUtils;
 import fr.mateoox600.game.raylib.Camera;
 import fr.mateoox600.game.raylib.RayDrawer;
+import fr.mateoox600.game.raylib.Texture;
 import se.krka.kahlua.converter.KahluaConverterManager;
 import se.krka.kahlua.integration.LuaCaller;
 import se.krka.kahlua.integration.expose.LuaJavaClassExposer;
@@ -46,7 +46,7 @@ public class LuaManager {
         exposer.exposeClass(Camera.class);
         exposer.exposeClass(RayDrawer.class);
         exposer.exposeClass(Color.class);
-        exposer.exposeClass(Texture2D.class);
+        exposer.exposeClass(Texture.class);
 
         env.rawset("camera", main.rayLibManager.camera);
         env.rawset("Colors", Colors.getColorTable(platform));
