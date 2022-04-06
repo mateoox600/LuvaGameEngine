@@ -4,9 +4,10 @@ import fr.mateoox600.game.lua.events.javaevents.DrawUiEvent;
 import fr.mateoox600.game.lua.events.javaevents.UpdateEvent;
 import fr.mateoox600.game.lua.events.javaevents.input.MouseButtonPressedEvent;
 import fr.mateoox600.game.lua.events.javaevents.DrawEvent;
-import fr.mateoox600.game.lua.events.javaevents.input.KeyPressedEvent;
+import fr.mateoox600.game.lua.events.javaevents.input.key.KeyDownEvent;
+import fr.mateoox600.game.lua.events.javaevents.input.key.KeyPressedEvent;
 import fr.mateoox600.game.lua.events.javaevents.OneSecondEvent;
-import fr.mateoox600.game.lua.events.javaevents.input.KeyReleasedEvent;
+import fr.mateoox600.game.lua.events.javaevents.input.key.KeyReleasedEvent;
 import fr.mateoox600.game.lua.events.javaevents.input.MouseButtonReleasedEvent;
 
 public class JavaEvents {
@@ -19,18 +20,12 @@ public class JavaEvents {
             new MouseButtonPressedEvent(),
             new MouseButtonReleasedEvent(),
             new KeyPressedEvent(),
-            new KeyReleasedEvent()
+            new KeyReleasedEvent(),
+            new KeyDownEvent()
     };
 
     public static JavaEvent[] getEvents() {
         return events;
-    }
-
-    public static JavaEvent getFromName(String name) {
-        for(JavaEvent e : getEvents()) {
-            if(e.getName().equals(name)) return e;
-        }
-        return null;
     }
 
 }

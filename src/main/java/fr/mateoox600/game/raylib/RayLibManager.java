@@ -3,8 +3,6 @@ package fr.mateoox600.game.raylib;
 import com.raylib.java.Raylib;
 import com.raylib.java.core.Color;
 import fr.mateoox600.game.Main;
-import fr.mateoox600.game.lua.events.JavaEvents;
-import fr.mateoox600.game.lua.events.JavaEvent;
 
 import java.io.IOException;
 
@@ -14,6 +12,7 @@ public class RayLibManager {
 
     public final Raylib raylib;
     public final Camera camera;
+    public final RayDrawer drawer = new RayDrawer();
 
     public RayLibManager() {
         raylib = new Raylib();
@@ -25,10 +24,6 @@ public class RayLibManager {
     public void start() throws IOException {
 
         boolean initialized = false;
-        JavaEvent drawEvent = JavaEvents.getFromName("draw");
-        JavaEvent drawUiEvent = JavaEvents.getFromName("drawUi");
-        if(drawEvent == null) throw new Error("Critical error missing draw event");
-        if(drawUiEvent == null) throw new Error("Critical error missing draw ui event");
         while (!raylib.core.WindowShouldClose()){
             if(!initialized) {
                 initialized = true;
@@ -42,13 +37,13 @@ public class RayLibManager {
 
             raylib.core.BeginMode2D(camera);
 
-            main.luaManager.eventManager.execute(drawEvent);
+            main.luaManager.eventManager.execute("draw", drawer);
 
             raylib.core.EndMode2D();
 
             raylib.text.DrawFPS(5, 5, Color.BLACK);
 
-            main.luaManager.eventManager.execute(drawUiEvent);
+            main.luaManager.eventManager.execute("drawUi", drawer);
 
             raylib.core.EndDrawing();
         }

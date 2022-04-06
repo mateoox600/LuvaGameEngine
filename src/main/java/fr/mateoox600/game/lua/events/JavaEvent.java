@@ -4,8 +4,6 @@ public interface JavaEvent {
 
     String getName();
 
-    boolean checkExecute();
-
-    Object[] getArguments();
+    void update(EventUpdateHelper event);
 
 }
