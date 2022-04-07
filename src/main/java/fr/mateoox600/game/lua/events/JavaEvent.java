@@ -1,9 +1,13 @@
 package fr.mateoox600.game.lua.events;
 
-public interface JavaEvent {
+public abstract class JavaEvent {
 
-    String getName();
+    public final String name;
 
-    void update(EventUpdateHelper event);
+    public JavaEvent(String name) {
+        this.name = name;
+    }
+
+    protected abstract void update(EventUpdateHelper event);
 
 }

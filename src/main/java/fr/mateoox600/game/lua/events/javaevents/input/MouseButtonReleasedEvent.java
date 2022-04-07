@@ -4,13 +4,12 @@ import fr.mateoox600.game.Main;
 import fr.mateoox600.game.lua.events.EventUpdateHelper;
 import fr.mateoox600.game.lua.events.JavaEvent;
 
-public class MouseButtonReleasedEvent implements JavaEvent {
+public class MouseButtonReleasedEvent extends JavaEvent {
 
     private final Main main = Main.getInstance();
 
-    @Override
-    public String getName() {
-        return "mouseButtonReleased";
+    public MouseButtonReleasedEvent() {
+        super("mouseButtonReleased");
     }
 
     @Override

@@ -3,11 +3,10 @@ package fr.mateoox600.game.lua.events.javaevents;
 import fr.mateoox600.game.lua.events.EventUpdateHelper;
 import fr.mateoox600.game.lua.events.JavaEvent;
 
-public class UpdateEvent implements JavaEvent {
+public class UpdateEvent extends JavaEvent {
 
-    @Override
-    public String getName() {
-        return "update";
+    public UpdateEvent() {
+        super("update");
     }
 
     @Override

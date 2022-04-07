@@ -4,13 +4,12 @@ import com.raylib.java.core.rCore;
 import fr.mateoox600.game.lua.events.EventUpdateHelper;
 import fr.mateoox600.game.lua.events.JavaEvent;
 
-public class OneSecondEvent implements JavaEvent {
+public class OneSecondEvent extends JavaEvent {
 
     private float acc = 0;
 
-    @Override
-    public String getName() {
-        return "1sEvent";
+    public OneSecondEvent() {
+        super("1sEvent");
     }
 
     @Override

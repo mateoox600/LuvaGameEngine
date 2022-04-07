@@ -3,11 +3,10 @@ package fr.mateoox600.game.lua.events.javaevents;
 import fr.mateoox600.game.lua.events.EventUpdateHelper;
 import fr.mateoox600.game.lua.events.JavaEvent;
 
-public class DrawEvent implements JavaEvent {
+public class DrawEvent extends JavaEvent {
 
-    @Override
-    public String getName() {
-        return "draw";
+    public DrawEvent() {
+        super("draw");
     }
 
     @Override

@@ -4,13 +4,12 @@ import fr.mateoox600.game.Main;
 import fr.mateoox600.game.lua.events.EventUpdateHelper;
 import fr.mateoox600.game.lua.events.JavaEvent;
 
-public class KeyReleasedEvent implements JavaEvent {
+public class KeyReleasedEvent extends JavaEvent {
 
     private final Main main = Main.getInstance();
 
-    @Override
-    public String getName() {
-        return "keyReleased";
+    public KeyReleasedEvent() {
+        super("keyReleased");
     }
 
     @Override

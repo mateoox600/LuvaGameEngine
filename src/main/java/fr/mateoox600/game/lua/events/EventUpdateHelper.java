@@ -12,7 +12,7 @@ public class EventUpdateHelper {
     }
 
     public EventUpdateHelper(JavaEvent eventName) {
-        this(eventName.getName());
+        this(eventName.name);
     }
 
     public void trigger(Object... args) {
