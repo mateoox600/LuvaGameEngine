@@ -12,9 +12,9 @@ public class KeyDownEvent extends JavaEvent {
 
     @Override
     public void update(EventUpdateHelper event) {
-        for (int i = 0; i < 512; i++) {
-            if(rCore.IsKeyDown(i)) {
-                event.trigger((double) i);
+        for (int key = 0; key < 512; key++) {
+            if(rCore.IsKeyDown(key)) {
+                event.trigger((double) key);
             }
         }
     }

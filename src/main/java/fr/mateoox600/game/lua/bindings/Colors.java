@@ -37,19 +37,19 @@ public class Colors {
         table.rawset("BLANK", Color.BLANK);
         table.rawset("MAGENTA", Color.MAGENTA);
         table.rawset("RAY_WHITE", Color.RAYWHITE);
-        table.rawset("fromRGB", (JavaFunction) (luaCallFrame, i) -> {
-            if(i == 3) {
+        table.rawset("fromRGB", (JavaFunction) (luaCallFrame, argsNumber) -> {
+            if(argsNumber == 3) {
                 double r = KahluaUtil.getDoubleArg(luaCallFrame, 1, "fromRGB");
                 double g = KahluaUtil.getDoubleArg(luaCallFrame, 2, "fromRGB");
                 double b = KahluaUtil.getDoubleArg(luaCallFrame, 3, "fromRGB");
                 luaCallFrame.push(new Color((int) r, (int) g, (int) b, 255));
-            } else if(i == 4) {
+            } else if(argsNumber == 4) {
                 double r = KahluaUtil.getDoubleArg(luaCallFrame, 1, "fromRGB");
                 double g = KahluaUtil.getDoubleArg(luaCallFrame, 2, "fromRGB");
                 double b = KahluaUtil.getDoubleArg(luaCallFrame, 3, "fromRGB");
                 double a = KahluaUtil.getDoubleArg(luaCallFrame, 4, "fromRGB");
                 luaCallFrame.push(new Color((int) r, (int) g, (int) b, (int) a));
-            } else throw new RuntimeException("colorFromRGB needs 3 or 4 arguments (red, green, blue and optional alpha)");
+            } else throw new RuntimeException("Colors.fromRGB needs 3 or 4 arguments (red, green, blue and optional alpha)");
             return 1;
         });
 

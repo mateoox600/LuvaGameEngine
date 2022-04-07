@@ -14,9 +14,9 @@ public class MouseButtonReleasedEvent extends JavaEvent {
 
     @Override
     public void update(EventUpdateHelper event) {
-        for (int i = 0; i < 3; i++) {
-            if(main.rayLibManager.raylib.core.IsMouseButtonReleased(i)) {
-                event.trigger((double) i);
+        for (int button = 0; button < 3; button++) {
+            if(main.rayLibManager.raylib.core.IsMouseButtonReleased(button)) {
+                event.trigger((double) button);
             }
         }
     }

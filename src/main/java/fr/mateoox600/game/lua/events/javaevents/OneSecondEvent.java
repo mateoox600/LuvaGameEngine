@@ -6,7 +6,7 @@ import fr.mateoox600.game.lua.events.JavaEvent;
 
 public class OneSecondEvent extends JavaEvent {
 
-    private float acc = 0;
+    private float accumultator = 0;
 
     public OneSecondEvent() {
         super("1sEvent");
@@ -14,11 +14,11 @@ public class OneSecondEvent extends JavaEvent {
 
     @Override
     public void update(EventUpdateHelper event) {
-        this.acc += rCore.GetFrameTime();
-        if(acc >= 1) {
-            float miss = acc - 1;
-            acc = 0;
-            event.trigger(miss);
+        this.accumultator += rCore.GetFrameTime();
+        if(accumultator >= 1) {
+            float delta = accumultator - 1;
+            accumultator = 0;
+            event.trigger(delta);
         }
     }
 

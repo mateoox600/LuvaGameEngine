@@ -22,7 +22,7 @@ public class Camera extends Camera2D {
     }
 
     @LuaMethod(name = "getTarget")
-    public KahluaTable getCamTarget() {
+    public KahluaTable getCameraTarget() {
         KahluaTable returns = main.luaManager.platform.newTable();
         returns.rawset("x", (double) this.target.x);
         returns.rawset("y", (double) this.target.y);
@@ -35,7 +35,7 @@ public class Camera extends Camera2D {
     }
 
     @LuaMethod(name = "getOffset")
-    public KahluaTable getCamOffset() {
+    public KahluaTable getCameraOffset() {
         KahluaTable returns = main.luaManager.platform.newTable();
         returns.rawset("x", (double) this.offset.x);
         returns.rawset("y", (double) this.offset.y);
@@ -48,7 +48,7 @@ public class Camera extends Camera2D {
     }
 
     @LuaMethod(name = "getRotation")
-    public double getCamRotation() {
+    public double getCameraRotation() {
         return this.rotation;
     }
 
@@ -58,7 +58,7 @@ public class Camera extends Camera2D {
     }
 
     @LuaMethod(name = "getCamZoom")
-    public double getCamZoom() {
+    public double getCameraZoom() {
         return this.zoom;
     }
 

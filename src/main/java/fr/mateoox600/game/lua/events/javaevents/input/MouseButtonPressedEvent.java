@@ -14,9 +14,9 @@ public class MouseButtonPressedEvent extends JavaEvent {
 
     @Override
     public void update(EventUpdateHelper event) {
-        for (int i = 0; i < 3; i++) {
-            if(main.rayLibManager.raylib.core.IsMouseButtonPressed(i)) {
-                event.trigger((double) i, (double) main.rayLibManager.raylib.core.GetMouseX(), (double) main.rayLibManager.raylib.core.GetMouseY());
+        for (int button = 0; button < 3; button++) {
+            if(main.rayLibManager.raylib.core.IsMouseButtonPressed(button)) {
+                event.trigger((double) button, (double) main.rayLibManager.raylib.core.GetMouseX(), (double) main.rayLibManager.raylib.core.GetMouseY());
             }
         }
     }

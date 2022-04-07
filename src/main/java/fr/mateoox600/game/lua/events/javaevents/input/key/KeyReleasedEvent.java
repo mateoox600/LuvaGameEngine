@@ -14,9 +14,9 @@ public class KeyReleasedEvent extends JavaEvent {
 
     @Override
     public void update(EventUpdateHelper event) {
-        for (int i = 0; i < 512; i++) {
-            if(main.rayLibManager.raylib.core.IsKeyReleased(i)) {
-                event.trigger((double) i);
+        for (int key = 0; key < 512; key++) {
+            if(main.rayLibManager.raylib.core.IsKeyReleased(key)) {
+                event.trigger((double) key);
             }
         }
     }

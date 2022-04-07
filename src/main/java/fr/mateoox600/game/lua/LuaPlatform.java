@@ -52,8 +52,8 @@ public class LuaPlatform implements Platform {
         try {
             LuaClosure closure = LuaCompiler.loadis(ResourceLoader.loadJarResourceAsStream("/serialize.lua"), "serialize.lua", env);
             workerThread.call(closure, null, null, null);
-        } catch (IOException var4) {
-            throw new RuntimeException(var4);
+        } catch (IOException error) {
+            throw new RuntimeException(error);
         }
     }
 

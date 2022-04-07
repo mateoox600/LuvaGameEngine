@@ -14,9 +14,9 @@ public class KeyPressedEvent extends JavaEvent {
 
     @Override
     public void update(EventUpdateHelper event) {
-        for (int i = 0; i < 512; i++) {
-            if(main.rayLibManager.raylib.core.IsKeyPressed(i)) {
-                event.trigger((double) i);
+        for (int key = 0; key < 512; key++) {
+            if(main.rayLibManager.raylib.core.IsKeyPressed(key)) {
+                event.trigger((double) key);
             }
         }
     }

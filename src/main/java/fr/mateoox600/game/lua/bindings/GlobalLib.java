@@ -40,8 +40,7 @@ public class GlobalLib {
 
     @LuaMethod(name = "on", global = true)
     public void on(String name, LuaClosure function) {
-        if(name == null) return;
-        if(function == null) return;
+        if(name == null || function == null) return;
         main.luaManager.eventManager.addEvent(name, function);
     }
 

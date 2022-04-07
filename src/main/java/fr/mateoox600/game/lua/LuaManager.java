@@ -20,7 +20,7 @@ public class LuaManager {
 
     private final Main main = Main.getInstance();
 
-    private final String mainPath;
+    private final String mainFilePath;
 
     public final KahluaConverterManager converterManager;
     public final LuaPlatform platform;
@@ -31,7 +31,7 @@ public class LuaManager {
     public final EventManager eventManager;
 
     public LuaManager(String mainPath) {
-        this.mainPath = mainPath;
+        this.mainFilePath = mainPath;
         converterManager = new KahluaConverterManager();
         platform = LuaPlatform.getInstance();
         env = platform.newEnvironment();
@@ -54,7 +54,7 @@ public class LuaManager {
         env.rawset("KeyboardButton", KeyboardButton.getKeyboardButtonTable(platform));
         env.rawset("Input", new Input());
 
-        LuaFileUtils.executeLuaFile(mainPath);
+        LuaFileUtils.executeLuaFile(mainFilePath);
     }
 
 }

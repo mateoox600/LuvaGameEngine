@@ -15,8 +15,8 @@ public class RayDrawer {
     }
 
     @LuaMethod(name = "drawLine")
-    public void drawLine(double x1, double y1, double x2, double y2, Color color) {
-        main.rayLibManager.raylib.shapes.DrawLine((int) x1, (int) y1, (int) x2, (int) y2, color);
+    public void drawLine(double xFrom, double yFrom, double xTo, double yTo, Color color) {
+        main.rayLibManager.raylib.shapes.DrawLine((int) xFrom, (int) yFrom, (int) xTo, (int) yTo, color);
     }
 
     @LuaMethod(name = "fillCircle")
@@ -30,13 +30,13 @@ public class RayDrawer {
     }
 
     @LuaMethod(name = "fillEllipse")
-    public void fillEllipse(double x, double y, double radiusH, double radiusV, Color color) {
-        main.rayLibManager.raylib.shapes.DrawEllipse((int) x, (int) y, (int) radiusH, (int) radiusV, color);
+    public void fillEllipse(double x, double y, double radiusWidth, double radiusHeight, Color color) {
+        main.rayLibManager.raylib.shapes.DrawEllipse((int) x, (int) y, (int) radiusWidth, (int) radiusHeight, color);
     }
 
     @LuaMethod(name = "strokeEllipse")
-    public void strokeEllipse(double x, double y, double radiusH, double radiusV, Color color) {
-        main.rayLibManager.raylib.shapes.DrawEllipseLines((int) x, (int) y, (int) radiusH, (int) radiusV, color);
+    public void strokeEllipse(double x, double y, double radiusWidth, double radiusHeight, Color color) {
+        main.rayLibManager.raylib.shapes.DrawEllipseLines((int) x, (int) y, (int) radiusWidth, (int) radiusHeight, color);
     }
 
     @LuaMethod(name = "fillRing")

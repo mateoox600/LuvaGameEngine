@@ -31,17 +31,17 @@ public class LuaFileUtils {
     }
 
     public static LuaReturn executeLuaClosure(LuaClosure closure, Object ...args) {
-        LuaReturn end = main.luaManager.caller.protectedCall(main.luaManager.thread, closure, args);
-        if(!end.isSuccess()) System.out.println(end.getErrorString() + " " + end.getLuaStackTrace());
-        return end;
+        LuaReturn returns = main.luaManager.caller.protectedCall(main.luaManager.thread, closure, args);
+        if(!returns.isSuccess()) System.out.println(returns.getErrorString() + " " + returns.getLuaStackTrace());
+        return returns;
     }
 
     public static LuaReturn executeLuaFile(String path, Object ...args) throws IOException {
         LuaClosure closure = loadLuaFile(path);
         if(closure == null) throw new IOException("LUA FILE '" + path + "' NOT FOUND");
-        LuaReturn end = main.luaManager.caller.protectedCall(main.luaManager.thread, closure, args);
-        if(!end.isSuccess()) System.out.println(end.getErrorString() + " " + end.getLuaStackTrace());
-        return end;
+        LuaReturn returns = main.luaManager.caller.protectedCall(main.luaManager.thread, closure, args);
+        if(!returns.isSuccess()) System.out.println(returns.getErrorString() + " " + returns.getLuaStackTrace());
+        return returns;
     }
 
 }

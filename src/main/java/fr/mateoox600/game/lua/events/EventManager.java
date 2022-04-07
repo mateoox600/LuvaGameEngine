@@ -21,13 +21,13 @@ public class EventManager {
         }
     }
 
-    public void addEvent(String eventType, LuaClosure function) {
-        Event event = new Event(eventType, function);
-        if(events.containsKey(eventType)) events.get(eventType).add(event);
+    public void addEvent(String name, LuaClosure function) {
+        Event event = new Event(name, function);
+        if(events.containsKey(name)) events.get(name).add(event);
         else {
             ArrayList<Event> list = new ArrayList<>();
             list.add(event);
-            events.put(eventType, list);
+            events.put(name, list);
         }
     }
 
