@@ -15,7 +15,7 @@ public class EventUpdateHelper {
         this(eventName.getName());
     }
 
-    public void trigger(Object ...args) {
+    public void trigger(Object... args) {
         main.luaManager.eventManager.execute(eventName, args);
     }
 

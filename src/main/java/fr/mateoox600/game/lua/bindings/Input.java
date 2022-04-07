@@ -37,16 +37,16 @@ public class Input {
     @LuaMethod(name = "getMousePosition")
     public KahluaTable getMousePosition() {
         KahluaTable table = main.luaManager.platform.newTable();
-        table.rawset("x", main.rayLibManager.raylib.core.GetMouseX());
-        table.rawset("y", main.rayLibManager.raylib.core.GetMouseY());
+        table.rawset("x", (double) main.rayLibManager.raylib.core.GetMouseX());
+        table.rawset("y", (double) main.rayLibManager.raylib.core.GetMouseY());
         return table;
     }
 
     @LuaMethod(name = "getMouseDelta")
     public KahluaTable getMouseDelta() {
         KahluaTable table = main.luaManager.platform.newTable();
-        table.rawset("x", main.rayLibManager.raylib.core.GetMouseDelta().x);
-        table.rawset("y", main.rayLibManager.raylib.core.GetMouseDelta().y);
+        table.rawset("x", (double) main.rayLibManager.raylib.core.GetMouseDelta().x);
+        table.rawset("y", (double) main.rayLibManager.raylib.core.GetMouseDelta().y);
         return table;
     }
 
