@@ -8,7 +8,7 @@ local cat = load('./cat.png');
 pipe('starting', function(str)
     return str .. ' main file !?!'
 end, function(str)
-    return str:gsub('%!%?%!', '%!%!')
+    return str:gsub('%?', '')
 end, function(str)
     print(str)
 end)
