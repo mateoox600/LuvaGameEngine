@@ -12,8 +12,6 @@ import se.krka.kahlua.integration.annotations.LuaMethod;
 import se.krka.kahlua.vm.LuaClosure;
 
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class GlobalLib {
 
@@ -21,13 +19,13 @@ public class GlobalLib {
 
     @LuaMethod(name = "require", global = true)
     public Object require(String file) throws IOException {
-        Pattern fileExtRegexPattern = Pattern.compile("\\.(\\w+$)");
-        Matcher matcher = fileExtRegexPattern.matcher(file);
-        if(!matcher.find() || matcher.group(1).equals("lua")) {
-            LuaReturn end = LuaFileUtils.executeLuaFile(file);
-            return end.getFirst();
-        }
-        return null;
+        LuaReturn end = LuaFileUtils.executeLuaFile(file);
+        return end.size() >= 1 ? end.getFirst() : null;
+    }
+
+    @LuaMethod(name = "use", global = true)
+    public void use(String file) throws IOException {
+        LuaFileUtils.executeLuaFile(file);
     }
 
     @LuaMethod(name = "load", global = true)
@@ -36,6 +34,16 @@ public class GlobalLib {
         Texture texture = new Texture(image);
         MemoryManager.loadedTextures.add(texture);
         return texture;
+    }
+
+    @LuaMethod(name = "pipe", global = true)
+    public Object pipe(Object in, LuaClosure ...steps) {
+        Object result = in;
+        for (LuaClosure closure : steps) {
+            LuaReturn returns = LuaFileUtils.executeLuaClosure(closure, result);
+            result = returns.size() >= 1 ? returns.getFirst() : null;
+        }
+        return result;
     }
 
     @LuaMethod(name = "on", global = true)

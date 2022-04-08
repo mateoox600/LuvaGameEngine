@@ -13,7 +13,7 @@ function String.toString(o, i, p)
         return '...'
     end
     if type(o) == 'table' then
-        local indent = string.rep('    ', i)
+        local indent = ('    '):rep(i)
         local s = '{\n'
         for k,v in pairs(o) do
             if type(k) ~= 'number' then 
@@ -22,7 +22,7 @@ function String.toString(o, i, p)
             v = String.toString(v, i + 1, Table.merge({tostring(o)}, p))
             s = s .. indent .. '    [' .. k .. '] = ' .. v .. ',\n'
         end
-        s = string.sub(s, 0, string.len(s) - 2)
+        s = s:sub(0, s:len() - 2)
         return s .. '\n' .. indent .. '}'
     else
         return tostring(o)

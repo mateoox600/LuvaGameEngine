@@ -1,10 +1,14 @@
 {
     "Lua.diagnostics.globals": [
         "on",
+        "require",
+        "load",
         "Colors",
         "Input",
         "KeyboardButton",
         "MouseButton",
-        "camera"
+        "camera",
+        "use",
+        "pipe"
     ]
 }
