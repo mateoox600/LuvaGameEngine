@@ -1,62 +1,59 @@
-local String = require('<string.lua>')
-local Vector = require('<vector.lua>')
+local ProgressBar = require('./src/components/progressBar.lua')
+local Button = require('./src/components/button.lua')
 
-use('./src/mouvementsManager.lua')
+local credits = 0
+local creditGain = 1
 
-local cat = load('./cat.png');
+local creditBar = ProgressBar:new(5, 560, 790, 35, {
+    ['time'] = 25, ['horizontal'] = true,
+    ['borderColor'] = Colors.fromRGB(173, 175, 184),
+    ['progressColor'] = Colors.fromRGB(83, 100, 194),
+    ['lineWidth'] = 2
+})
 
-pipe('starting', function(str)
-    return str .. ' main file !?!'
-end, function(str)
-    return str:gsub('%?', '')
-end, function(str)
-    print(str)
-end)
+local speedUpButton = Button:new(345, 520, 110, 35, {
+    ['text'] = 'Speed up', ['fontSize'] = 20,
+    ['borderColor'] = Colors.RED,
+    ['backgroundColor'] = Colors.BLUE,
+    ['textColor'] = Colors.WHITE,
+    ['lineWidth'] = 2
+})
 
-local clicks = 0
-local rects = {}
-local selecting = false
-local startPos = { ['x'] = 0, ['y'] = 0 }
-local function getSelectionRect()
-    local currentPos = camera:getScreenToWorld2D(Input:getMousePosition().x, Input:getMousePosition().y)
-    local x = math.min(startPos.x, currentPos.x)
-    local y = math.min(startPos.y, currentPos.y)
-    local width = math.max(startPos.x, currentPos.x) - x
-    local height = math.max(startPos.y, currentPos.y) - y
-    return { ['x'] = x, ['y'] = y, ['width'] = width, ['height'] = height }
-end
-
-print(String.toString(startPos))
+local buyCreditGainButton = Button:new(640, 25, 150, 25, {
+    ['text'] = 'Up credit gain by 1',
+    ['borderColor'] = Colors.RED,
+    ['backgroundColor'] = Colors.BLUE
+})
 
 on('draw', function(drawer)
-    drawer:fillRect(25, 25, 50, 50, Colors.fromRGB(255, 0, 0))
-    drawer:drawText('Clicks: ' .. clicks, 100, 25, 16, Colors.BLACK)
-    drawer:drawTexture(cat, 100, 100, Colors.WHITE)
-    if selecting then
-        local rect = getSelectionRect()
-        drawer:strokeRect(rect.x, rect.y, rect.width, rect.height, Colors.BLACK)
-    end
-    for _, rect in pairs(rects) do
-        drawer:strokeRect(rect.x, rect.y, rect.width, rect.height, Colors.BLACK)
-    end
+    drawer:drawText('Credits: ' .. tostring(credits), 10, 10, 20, Colors.WHITE)
+
+    speedUpButton:draw(drawer)
+    creditBar:draw(drawer)
+
+    local creditGainText = 'Credits gain: ' .. tostring(creditGain)
+    drawer:drawText(creditGainText, 400 - (drawer:measureText(creditGainText, 20) / 2), 567, 20, Colors.WHITE)
+    
+    buyCreditGainButton:draw(drawer)
+
+    local text = 'Cost: ' .. tostring(creditGain * 10)
+    local textWidth = drawer:measureText(text, 14)
+    drawer:drawText(text, 715 - textWidth / 2, 55, 14, Colors.BLACK)
 end)
 
-on('mouseButtonPressed', function(button)
-    if button == MouseButton.MOUSE_BUTTON_LEFT and not selecting then
-        selecting = true
-        startPos = camera:getScreenToWorld2D(Input:getMousePosition().x, Input:getMousePosition().y)
+on('update', function()
+    if buyCreditGainButton:update() then
+        if credits >= creditGain * 10 then
+            credits = credits - creditGain * 10
+            creditGain = creditGain + 1
+        end
     end
-end)
 
-on('mouseButtonReleased', function(button)
-    if button == MouseButton.MOUSE_BUTTON_LEFT and selecting then
-        selecting = false
-        table.insert(rects, getSelectionRect())
+    if speedUpButton:update() then
+        creditBar.progress = creditBar.progress + 0.1
     end
-end)
-
-on('keyPressed', function(key)
-    if key == KeyboardButton.KEY_SPACE then
-        clicks = clicks + 1
+    
+    if creditBar:update() then
+        credits = credits + creditGain
     end
 end)

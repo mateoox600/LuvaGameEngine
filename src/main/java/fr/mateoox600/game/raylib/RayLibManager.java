@@ -33,15 +33,13 @@ public class RayLibManager {
             main.luaManager.eventManager.update();
 
             raylib.core.BeginDrawing();
-            raylib.core.ClearBackground(Color.WHITE);
+            raylib.core.ClearBackground(new Color(40, 42, 54, 255));
 
             raylib.core.BeginMode2D(camera);
 
             main.luaManager.eventManager.execute("draw", drawer);
 
             raylib.core.EndMode2D();
-
-            raylib.text.DrawFPS(5, 5, Color.BLACK);
 
             main.luaManager.eventManager.execute("drawUi", drawer);
 

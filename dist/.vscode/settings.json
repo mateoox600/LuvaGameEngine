@@ -9,6 +9,7 @@
         "MouseButton",
         "camera",
         "use",
-        "pipe"
+        "pipe",
+        "getTimeDelta"
     ]
 }

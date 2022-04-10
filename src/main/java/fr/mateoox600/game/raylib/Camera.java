@@ -57,7 +57,7 @@ public class Camera extends Camera2D {
         this.setZoom((float) zoom);
     }
 
-    @LuaMethod(name = "getCamZoom")
+    @LuaMethod(name = "getZoom")
     public double getCameraZoom() {
         return this.zoom;
     }

@@ -2,6 +2,7 @@ package fr.mateoox600.game.raylib;
 
 import com.raylib.java.core.Color;
 import com.raylib.java.raymath.Vector2;
+import com.raylib.java.shapes.Rectangle;
 import fr.mateoox600.game.Main;
 import se.krka.kahlua.integration.annotations.LuaMethod;
 
@@ -15,8 +16,8 @@ public class RayDrawer {
     }
 
     @LuaMethod(name = "drawLine")
-    public void drawLine(double xFrom, double yFrom, double xTo, double yTo, Color color) {
-        main.rayLibManager.raylib.shapes.DrawLine((int) xFrom, (int) yFrom, (int) xTo, (int) yTo, color);
+    public void drawLine(double xFrom, double yFrom, double xTo, double yTo, double lineWidth, Color color) {
+        main.rayLibManager.raylib.shapes.DrawLineEx(new Vector2((int) xFrom, (int) yFrom), new Vector2((int) xTo, (int) yTo), (int) lineWidth, color);
     }
 
     @LuaMethod(name = "fillCircle")
@@ -55,8 +56,8 @@ public class RayDrawer {
     }
 
     @LuaMethod(name = "strokeRect")
-    public void strokeRect(double x, double y, double width, double height, Color color) {
-        main.rayLibManager.raylib.shapes.DrawRectangleLines((int) x, (int) y, (int) width, (int) height, color);
+    public void strokeRect(double x, double y, double width, double height, double lineWidth, Color color) {
+        main.rayLibManager.raylib.shapes.DrawRectangleLinesEx(new Rectangle((int) x, (int) y, (int) width, (int) height), (int) lineWidth, color);
     }
 
     @LuaMethod(name = "fillPoly")
@@ -65,8 +66,8 @@ public class RayDrawer {
     }
 
     @LuaMethod(name = "strokePoly")
-    public void strokePoly(double x, double y, double sides, double radius, double rotation, Color color) {
-        main.rayLibManager.raylib.shapes.DrawPolyLines(new Vector2((int) x, (int) y), (int) sides, (int) radius, (int) rotation, color);
+    public void strokePoly(double x, double y, double sides, double radius, double rotation, double lineWidth, Color color) {
+        main.rayLibManager.raylib.shapes.DrawPolyLinesEx(new Vector2((int) x, (int) y), (int) sides, (int) radius, (int) rotation, (int) lineWidth, color);
     }
 
     @LuaMethod(name = "drawText")

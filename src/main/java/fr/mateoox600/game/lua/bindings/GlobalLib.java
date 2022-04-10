@@ -1,5 +1,6 @@
 package fr.mateoox600.game.lua.bindings;
 
+import com.raylib.java.core.rCore;
 import com.raylib.java.textures.Image;
 import com.raylib.java.textures.rTextures;
 import fr.mateoox600.game.Main;
@@ -55,6 +56,11 @@ public class GlobalLib {
     @LuaMethod(name = "emitEvent", global = true)
     public void emitEvent(String name, Object ...args) {
         main.luaManager.eventManager.execute(name, args);
+    }
+
+    @LuaMethod(name = "getTimeDelta", global = true)
+    public double emitEvent() {
+        return rCore.GetFrameTime();
     }
 
 }
