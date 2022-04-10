@@ -11,11 +11,11 @@ function ProgressBar:new(x, y, width, height, options)
     progressBar.height = height
     progressBar.progress = 0
     progressBar.options = {
-        ['time'] = -1,
-        ['horizontal'] = false,
-        ['borderColor'] = Colors.WHITE,
-        ['progressColor'] = Colors.WHITE,
-        ['lineWidth'] = 1
+        time = -1,
+        horizontal = false,
+        borderColor = Colors.WHITE,
+        progressColor = Colors.WHITE,
+        lineWidth = 1
     }
     for key, value in pairs(options) do
         if key == 'progress' then

@@ -11,12 +11,12 @@ function Button:new(x, y, width, height, options)
     button.height = height
     button.clicked = false
     button.options = {
-        ['text'] = '',
-        ['fontSize'] = 14,
-        ['borderColor'] = Colors.WHITE,
-        ['backgroundColor'] = Colors.WHITE,
-        ['textColor'] = Colors.BLACK,
-        ['lineWidth'] = 1
+        text = '',
+        fontSize = 14,
+        borderColor = Colors.WHITE,
+        backgroundColor = Colors.WHITE,
+        textColor = Colors.BLACK,
+        lineWidth = 1
     }
     for key, value in pairs(options) do
         button.options[key] = value

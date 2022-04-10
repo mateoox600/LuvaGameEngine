@@ -5,24 +5,24 @@ local credits = 0
 local creditGain = 1
 
 local creditBar = ProgressBar:new(5, 560, 790, 35, {
-    ['time'] = 25, ['horizontal'] = true,
-    ['borderColor'] = Colors.fromRGB(173, 175, 184),
-    ['progressColor'] = Colors.fromRGB(83, 100, 194),
-    ['lineWidth'] = 2
+    time = 25, horizontal = true,
+    borderColor = Colors.fromRGB(173, 175, 184),
+    progressColor = Colors.fromRGB(83, 100, 194),
+    lineWidth = 2
 })
 
 local speedUpButton = Button:new(345, 520, 110, 35, {
-    ['text'] = 'Speed up', ['fontSize'] = 20,
-    ['borderColor'] = Colors.RED,
-    ['backgroundColor'] = Colors.BLUE,
-    ['textColor'] = Colors.WHITE,
-    ['lineWidth'] = 2
+    text = 'Speed up', fontSize = 20,
+    borderColor = Colors.RED,
+    backgroundColor = Colors.BLUE,
+    textColor = Colors.WHITE,
+    lineWidth = 2
 })
 
 local buyCreditGainButton = Button:new(640, 25, 150, 25, {
-    ['text'] = 'Up credit gain by 1',
-    ['borderColor'] = Colors.RED,
-    ['backgroundColor'] = Colors.BLUE
+    text = 'Up credit gain by 1',
+    borderColor = Colors.RED,
+    backgroundColor = Colors.BLUE
 })
 
 on('draw', function(drawer)
@@ -52,7 +52,7 @@ on('update', function()
     if speedUpButton:update() then
         creditBar.progress = creditBar.progress + 0.1
     end
-    
+
     if creditBar:update() then
         credits = credits + creditGain
     end
